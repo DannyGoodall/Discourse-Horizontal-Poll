@@ -1,0 +1,62 @@
+<script type="text/discourse-plugin" version="0.8">
+  showChildren = function(elem) {
+      if (elem.length) {
+          console.log("elem class is:", elem.attr('class'));
+          console.log("elem length is:", elem.length);
+         elem.each( function( index ) {
+              console.log(
+                  $(this).prop("tagName"),
+                  "->",
+                  $(this).html()
+                  );
+          })  
+          
+      } else {
+          console.log("No elements found.")
+      }
+  }
+  /*
+  hasPoll = function(elem) {
+      pollSelector = $(".poll", elem);
+      if (pollSelector.length >0) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+  */
+//  const delay = ms => new Promise(res => setTimeout(res, ms));
+
+/*
+  api.decorateCooked(
+      // $elem => $elem.find('div.poll-voters:empty').parent().parent().addClass('BLETCH')
+      // $elem => $elem.children('div').addClass('BLETCH')
+      function(elem) {
+          if ( !hasPoll(elem)) {
+              console.log("No poll found. Skipping");
+              return;
+          }
+          // We've got a poll on this post
+          e = $('.poll .results div.poll-voters:empty');
+          showChildren(e);
+
+  });
+  */
+  
+  function lookForEmptyDiv() {
+    e = $('.poll .results div.poll-voters:empty')
+    // showChildren(e);
+    // console.log("Looking for emtpy div. Found:", e)
+    return e
+  }
+  
+  $( document ).ready(function() {
+    // Handler for .ready() called.
+    // console.log("Document ready.")
+    window.setInterval(function(){
+        /// call your function here
+        e = lookForEmptyDiv();
+        e.parent().parent().addClass('remove-empty-vote');
+    }, 500);
+  });
+</script>
