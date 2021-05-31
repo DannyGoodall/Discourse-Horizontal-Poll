@@ -1,4 +1,6 @@
 <script type="text/discourse-plugin" version="0.8">
+  var showChildren = new function(){};
+  
   showChildren = function(elem) {
       if (elem.length) {
           console.log("elem class is:", elem.attr('class'));
@@ -39,12 +41,12 @@
           // We've got a poll on this post
           e = $('.poll .results div.poll-voters:empty');
           showChildren(e);
-
   });
   */
   
   function lookForEmptyDiv() {
-    e = $('.poll .results div.poll-voters:empty')
+      
+    var e = $('.poll .results div.poll-voters:empty')
     // showChildren(e);
     // console.log("Looking for emtpy div. Found:", e)
     return e
@@ -55,7 +57,7 @@
     // console.log("Document ready.")
     window.setInterval(function(){
         /// call your function here
-        e = lookForEmptyDiv();
+        var e = lookForEmptyDiv();
         e.parent().parent().addClass('remove-empty-vote');
     }, 500);
   });
