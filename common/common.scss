@@ -26,6 +26,12 @@ div.poll[data-poll-name^="horiz"] li[data-poll-option-id] {
   }
 }
 
+// Set the close poll button background color
+div.poll-buttons button[title="Close the poll"] {
+  background: #bd1550;
+}
+
+
 li.remove-empty-vote {
     display: none;
 }
